@@ -33,7 +33,7 @@ public class conexion {
         return instance;
     }
     
-    private conexion() throws SQLException{
+    private conexion() {
         cargarCredenciales();
         
         try{

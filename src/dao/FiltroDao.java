@@ -11,6 +11,7 @@ import interfaces.metodos;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,7 +30,7 @@ public class FiltroDao implements metodos<Filtro> {
   private static final String SQL_READ= "SELECT * FROM filtros_aceite WHERE codFiltro=?";
   private static final String SQL_READALL ="SELECT *FROM filtros_aceite"; 
   
-  private static final conexion con=conexion.conectar();
+  private static final conexion con =conexion.conectar();
 
     @Override
     public boolean create(Filtro g) {
@@ -118,7 +119,19 @@ public class FiltroDao implements metodos<Filtro> {
 
     @Override
     public ArrayList<Filtro> readAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ArrayList<Filtro> all= new ArrayList<>();
+        Statement s;
+        ResultSet rs;
+        try {
+            s= con.getCnx().prepareStatement(SQL_READALL);
+            rs= s.executeQuery(SQL_READALL);
+            while(rs.next()){
+                all.add(new Filtro(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getBoolean(5)));
+            }
+        rs.close();
+        } catch(SQLException ex){
+            Logger.getLogger(FiltroDao.class.getName()).log(Level.SEVERE,null,ex);
+        }
+        return all;
     }
-    
 }
