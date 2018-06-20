@@ -41,28 +41,24 @@ public class Filtro {
         this.existencia = existencia;
     }
 
-    public Filtro(int aInt) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     public String getCodigo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return codigo;
     }
 
     public String getMarca() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return marca;  
     }
+    
 
     public int getStock() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+     return stock;
     }
 
     public boolean getExistencia() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return existencia;
     }
 
-    public void setExistencia(boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void setExistencia(boolean existencia) {
+        this.existencia = existencia;
     }
-    
 }
